@@ -1,0 +1,8 @@
+{
+  "name": "TimeLine",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite",
+  "id": "4a80e1d4"
+}
