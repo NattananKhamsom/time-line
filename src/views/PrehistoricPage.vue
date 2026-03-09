@@ -15,6 +15,9 @@
           <div class="particle p2"></div>
           <div class="particle p3"></div>
         </div>
+        <div class="era-hero-image">
+  <img src="https://sacredland.org/wp-content/uploads/2019/08/Lascaux_painting.jpg" alt="Lascaux cave paintings">
+</div>
 
         <div class="era-page parchment-bg">
 
@@ -466,6 +469,18 @@ spark.remove()
   text-align: center;
   padding: 80px 20px 60px;
   position: relative;
+}
+.era-hero-image {
+  margin: 30px auto 40px;
+  max-width: 700px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.era-hero-image img {
+  width: 100%;
+  display: block;
 }
 
 .era-subtitle {
