@@ -143,7 +143,7 @@
   </div>
 
   <div class="guide-body">
-    🧙‍♂️
+    🤖
   </div>
 
 </div>

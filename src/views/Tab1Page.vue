@@ -11,13 +11,14 @@
           <p class="hero-subtitle">"The Human Odyssey: A Journey Through Every Era"</p>
           <div class="scroll-arrow scroll-indicator" @click="scrollToTimeline">
             <svg width="40" height="60" viewBox="0 0 40 60" fill="none">
-              <path d="M20 5 L20 50 M8 40 L20 52 L32 40" stroke="#3a2a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 5 L20 50 M8 40 L20 52 L32 40" stroke="#3a2a1a" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </div>
         </div>
       </section>
 
-       <!-- Timeline Container -->
+      <!-- Timeline Container -->
       <section class="timeline-section" id="timeline-section">
         <div class="section-heading">
           <span class="section-line"></span>
@@ -30,6 +31,7 @@
 
           <!-- 01 Prehistoric Era -->
           <div class="tl-item tl-right">
+
             <!-- Decorative elements -->
             <div class="era-deco deco-prehistoric">
               <span class="deco-icon" title="เครื่องมือหิน">🪨</span>
@@ -37,21 +39,37 @@
               <span class="deco-icon" title="สัตว์ยุคโบราณ">🦣</span>
               <div class="deco-scratch"></div>
             </div>
+
+            <!-- Image -->
+            <div class="tl-image tl-left">
+              <img src="https://miro.medium.com/v2/resize:fit:1400/1*KJUF9co1Yndb2i7ebxxFnQ.jpeg"
+                alt="Lascaux Cave Painting">
+            </div>
+
             <div class="tl-dot dot-01"></div>
+
             <div class="tl-card" @click="navigateTo('prehistoric')">
               <div class="era-badge badge-01">
                 <span class="badge-number">01</span>
                 <span class="badge-title">ยุคก่อนประวัติศาสตร์</span>
               </div>
+
               <p class="tl-date">📅 2.5 ล้านปีก่อน – 3,000 ปีก่อน ค.ศ.</p>
-              <p class="tl-desc">มนุษย์ถือกำเนิด เรียนรู้การใช้ไฟ สร้างเครื่องมือหิน และเริ่มต้นการดำรงชีวิตในฐานะสายพันธุ์ที่มีสติปัญญา</p>
+
+              <p class="tl-desc">
+                มนุษย์ถือกำเนิด เรียนรู้การใช้ไฟ สร้างเครื่องมือหิน
+                และเริ่มต้นการดำรงชีวิตในฐานะสายพันธุ์ที่มีสติปัญญา
+              </p>
+
               <div class="tl-tags">
                 <span class="tag">Homo Sapiens</span>
                 <span class="tag">Stone Tools</span>
                 <span class="tag">Cave Art</span>
               </div>
+
               <span class="tl-link">คลิกเพื่อดูรายละเอียด →</span>
             </div>
+
           </div>
 
           <!-- 02 Ancient Civilizations -->
@@ -62,6 +80,12 @@
               <span class="deco-icon" title="เรือ">⚓</span>
               <div class="deco-column"></div>
             </div>
+
+            <div class="tl-image">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/01_khafre_north.jpg"
+                alt="Ancient Civilizations">
+            </div>
+
             <div class="tl-dot dot-02"></div>
             <div class="tl-card" @click="navigateTo('ancient')">
               <div class="era-badge badge-02">
@@ -69,7 +93,8 @@
                 <span class="badge-title">อารยธรรมโบราณ</span>
               </div>
               <p class="tl-date">📅 3,000 ปีก่อน ค.ศ. – ค.ศ. 500</p>
-              <p class="tl-desc">มนุษย์ส่งต่อร่องรอยการเดินทางผ่านอักษร กฎหมาย ศิลปะ และสถาปัตยกรรมอันยิ่งใหญ่ ตั้งแต่อียิปต์ถึงกรีก-โรมัน</p>
+              <p class="tl-desc">มนุษย์ส่งต่อร่องรอยการเดินทางผ่านอักษร กฎหมาย ศิลปะ และสถาปัตยกรรมอันยิ่งใหญ่
+                ตั้งแต่อียิปต์ถึงกรีก-โรมัน</p>
               <div class="tl-tags">
                 <span class="tag">Egypt</span>
                 <span class="tag">Greece</span>
@@ -87,6 +112,11 @@
               <span class="deco-icon" title="ดาบ">⚔️</span>
               <div class="deco-cross"></div>
             </div>
+
+             <div class="tl-image">
+              <img src="https://mad.hypotheses.org/files/2014/12/viallon-destriers-Fig-4-550x304.gif"
+                alt="Ancient Civilizations">
+            </div>
             <div class="tl-dot dot-03"></div>
             <div class="tl-card" @click="navigateTo('middle-ages')">
               <div class="era-badge badge-03">
@@ -94,7 +124,8 @@
                 <span class="badge-title">ยุคกลาง</span>
               </div>
               <p class="tl-date">📅 ค.ศ. 500 – ค.ศ. 1450</p>
-              <p class="tl-desc">ศาสนา อำนาจ และความเชื่อครอบงำสังคม ยุคแห่งอัศวิน ปราสาท สงครามครูเสด และกาฬโรคที่เปลี่ยนโฉมหน้ายุโรป</p>
+              <p class="tl-desc">ศาสนา อำนาจ และความเชื่อครอบงำสังคม ยุคแห่งอัศวิน ปราสาท สงครามครูเสด
+                และกาฬโรคที่เปลี่ยนโฉมหน้ายุโรป</p>
               <div class="tl-tags">
                 <span class="tag">Feudalism</span>
                 <span class="tag">Crusades</span>
@@ -112,6 +143,10 @@
               <span class="deco-icon" title="หนังสือ">📖</span>
               <div class="deco-compass"></div>
             </div>
+             <div class="tl-image">
+              <img src="https://res.cloudinary.com/aenetworks/image/upload/c_fill,ar_2,w_3840,h_1920,g_auto/dpr_auto/f_auto/q_auto:eco/v1/renaissance-gettyimages-1309914466?_a=BAVAZGB00"
+                alt="Ancient Civilizations">
+            </div>
             <div class="tl-dot dot-04"></div>
             <div class="tl-card" @click="navigateTo('renaissance')">
               <div class="era-badge badge-04">
@@ -119,7 +154,8 @@
                 <span class="badge-title">ยุคฟื้นฟูศิลปวิทยา</span>
               </div>
               <p class="tl-date">📅 ค.ศ. 1450 – ค.ศ. 1750</p>
-              <p class="tl-desc">ยุคแห่งการตื่นรู้และการสำรวจ ศิลปินและนักวิทยาศาสตร์ผู้ยิ่งใหญ่อย่าง Da Vinci, Galileo เปลี่ยนโลกทัศน์ของมนุษย์</p>
+              <p class="tl-desc">ยุคแห่งการตื่นรู้และการสำรวจ ศิลปินและนักวิทยาศาสตร์ผู้ยิ่งใหญ่อย่าง Da Vinci, Galileo
+                เปลี่ยนโลกทัศน์ของมนุษย์</p>
               <div class="tl-tags">
                 <span class="tag">Da Vinci</span>
                 <span class="tag">Exploration</span>
@@ -137,6 +173,11 @@
               <span class="deco-icon" title="ฟันเฟือง">⚙️</span>
               <div class="deco-gear-ring"></div>
             </div>
+
+             <div class="tl-image">
+              <img src="https://www.mmthailand.com/wp-content/uploads/2024/08/Industrial-Revolution.jpg"
+                alt="Ancient Civilizations">
+            </div>
             <div class="tl-dot dot-05"></div>
             <div class="tl-card" @click="navigateTo('industrial')">
               <div class="era-badge badge-05">
@@ -144,7 +185,8 @@
                 <span class="badge-title">การปฏิวัติอุตสาหกรรม</span>
               </div>
               <p class="tl-date">📅 ค.ศ. 1750 – ค.ศ. 1900</p>
-              <p class="tl-desc">เครื่องจักรไอน้ำเปลี่ยนโลก การผลิตขนาดใหญ่ รถไฟ โทรเลข และการขยายตัวของเมืองอุตสาหกรรมทั่วโลก</p>
+              <p class="tl-desc">เครื่องจักรไอน้ำเปลี่ยนโลก การผลิตขนาดใหญ่ รถไฟ โทรเลข
+                และการขยายตัวของเมืองอุตสาหกรรมทั่วโลก</p>
               <div class="tl-tags">
                 <span class="tag">Steam Engine</span>
                 <span class="tag">Railways</span>
@@ -162,6 +204,10 @@
               <span class="deco-icon" title="AI">🤖</span>
               <div class="deco-circuit"></div>
             </div>
+             <div class="tl-image">
+              <img src="https://image.springnews.co.th/uploads/images/contents/w1024/2024/09/hlNSq52CBxNiyHnieJki.webp?x-image-process=style/lg-webp"
+                alt="Ancient Civilizations">
+            </div>
             <div class="tl-dot dot-06"></div>
             <div class="tl-card" @click="navigateTo('information')">
               <div class="era-badge badge-06">
@@ -169,7 +215,8 @@
                 <span class="badge-title">ยุคข้อมูลข่าวสาร</span>
               </div>
               <p class="tl-date">📅 ค.ศ. 1945 – ปัจจุบัน</p>
-              <p class="tl-desc">เทคโนโลยีและดิจิทัลครองโลก อินเทอร์เน็ต สมาร์ทโฟน และ AI เปลี่ยนวิธีที่มนุษย์เรียนรู้ สื่อสาร และดำรงชีวิต</p>
+              <p class="tl-desc">เทคโนโลยีและดิจิทัลครองโลก อินเทอร์เน็ต สมาร์ทโฟน และ AI เปลี่ยนวิธีที่มนุษย์เรียนรู้
+                สื่อสาร และดำรงชีวิต</p>
               <div class="tl-tags">
                 <span class="tag">Internet</span>
                 <span class="tag">AI</span>
@@ -198,7 +245,8 @@
             <div class="footer-brand">
               <span class="footer-logo">⏳ TIMELINE</span>
               <p class="footer-tagline">The Human Odyssey — A Journey Through Every Era</p>
-              <p class="footer-desc">เว็บแอปพลิเคชันสื่อการเรียนรู้แบบ Interactive Scrolling<br>สำรวจประวัติศาสตร์มนุษยชาติตั้งแต่ยุคก่อนประวัติศาสตร์จนถึงปัจจุบัน</p>
+              <p class="footer-desc">เว็บแอปพลิเคชันสื่อการเรียนรู้แบบ Interactive
+                Scrolling<br>สำรวจประวัติศาสตร์มนุษยชาติตั้งแต่ยุคก่อนประวัติศาสตร์จนถึงปัจจุบัน</p>
             </div>
             <div class="footer-col">
               <h4>ยุคสมัย</h4>
@@ -231,7 +279,8 @@
           </div>
 
           <div class="footer-bottom">
-            <p class="footer-copy">© 2024 <strong>Timeline — The Human Odyssey</strong> | ออกแบบเพื่อการเรียนรู้ประวัติศาสตร์</p>
+            <p class="footer-copy">© 2024 <strong>Timeline — The Human Odyssey</strong> |
+              ออกแบบเพื่อการเรียนรู้ประวัติศาสตร์</p>
             <div class="footer-team">
               <span class="team-label">พัฒนาโดย</span>
               <span class="team-names">กลุ่มนักศึกษา · Ionic Framework · KKU</span>
@@ -404,6 +453,64 @@ onMounted(() => {
   transform: translateX(-50%);
 }
 
+.tl-image {
+  width: 42%;
+  display: flex;
+  align-items: center;
+}
+
+.tl-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.tl-item:hover .tl-image img {
+  transform: scale(1.05);
+}
+
+
+
+/* positioning */
+
+.tl-right .tl-image {
+  order: 1;
+  margin-right: auto;
+}
+
+.tl-right .tl-card {
+  order: 2;
+}
+
+.tl-left .tl-card {
+  order: 1;
+}
+
+.tl-left .tl-image {
+  order: 2;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+
+  .tl-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tl-image {
+    display: none;
+  }
+
+  .tl-card {
+    width: 90%;
+  }
+
+}
+
 /* Timeline Items */
 .tl-item {
   display: flex;
@@ -430,6 +537,24 @@ onMounted(() => {
   box-shadow: 0 0 0 4px #c5a882, 0 0 0 6px #2d1e0f, 0 0 20px rgba(201, 169, 110, 0.5);
   background: #c9a96e;
 }
+
+
+.tl-image img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tl-right .tl-image {
+  margin-right: auto;
+}
+
+.tl-left .tl-image {
+  margin-left: auto;
+}
+
+
 
 .tl-card {
   width: 42%;
@@ -560,13 +685,28 @@ onMounted(() => {
   filter: drop-shadow(0 2px 4px rgba(45, 30, 15, 0.15));
 }
 
-.deco-icon:nth-child(1) { animation-delay: 0s; }
-.deco-icon:nth-child(2) { animation-delay: 1.2s; }
-.deco-icon:nth-child(3) { animation-delay: 2.4s; }
+.deco-icon:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.deco-icon:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+.deco-icon:nth-child(3) {
+  animation-delay: 2.4s;
+}
 
 @keyframes decoFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 /* Deco shapes */
@@ -658,8 +798,13 @@ onMounted(() => {
 }
 
 @keyframes decoSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ===== LEADERBOARD SECTION ===== */
@@ -906,13 +1051,16 @@ onMounted(() => {
     letter-spacing: 4px;
     -webkit-text-stroke: 1.5px #a88b6a;
   }
+
   .hero-subtitle {
     font-size: 0.9rem;
     padding: 0 20px;
   }
+
   .section-heading h2 {
     font-size: 1.2rem;
   }
+
   .section-line {
     width: 50px;
   }
