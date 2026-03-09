@@ -1,0 +1,275 @@
+/* ======================================
+   PARCHMENT / VINTAGE KRAFT PAPER THEME
+   ====================================== */
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Cinzel:wght@400;700;900&display=swap');
+
+:root {
+  /* Primary Parchment Colors */
+  --parchment-bg: #c5a882;
+  --parchment-light: #d4b896;
+  --parchment-dark: #a88b6a;
+  --parchment-darker: #8a7054;
+
+  /* Text Colors */
+  --text-primary: #2d1e0f;
+  --text-secondary: #4a3728;
+  --text-muted: #6b5744;
+  --text-light: #8a7a6a;
+
+  /* Accent Colors */
+  --accent-brown: #3a2a1a;
+  --accent-cream: #e8d5b7;
+  --accent-tan: #c9a96e;
+  --accent-badge-bg: #2d1e0f;
+  --accent-badge-text: #e8d5b7;
+
+  /* UI Colors */
+  --card-bg: rgba(232, 213, 183, 0.6);
+  --card-border: rgba(138, 112, 84, 0.3);
+  --shadow-color: rgba(45, 30, 15, 0.15);
+
+  /* Timeline */
+  --timeline-line-color: #2d1e0f;
+  --timeline-dot-color: #2d1e0f;
+
+  /* Quiz */
+  --quiz-correct: #4a7c59;
+  --quiz-wrong: #8b3a3a;
+  --quiz-highlight: #c9a96e;
+
+  /* Fonts */
+  --font-primary: 'Kanit', sans-serif;
+  --font-display: 'Cinzel', serif;
+  --font-accent: 'Playfair Display', serif;
+}
+
+/* Parchment Background Texture */
+.parchment-bg {
+  background: 
+    linear-gradient(135deg, 
+      rgba(197, 168, 130, 0.3) 0%, 
+      rgba(212, 184, 150, 0.5) 25%, 
+      rgba(197, 168, 130, 0.3) 50%, 
+      rgba(212, 184, 150, 0.5) 75%, 
+      rgba(197, 168, 130, 0.3) 100%
+    ),
+    linear-gradient(45deg, 
+      #c5a882 0%, 
+      #d4b896 20%, 
+      #c1a47e 40%, 
+      #d4b896 60%, 
+      #c5a882 80%, 
+      #d4b896 100%
+    );
+  background-color: #c5a882;
+}
+
+/* Parchment Navigation Bar */
+.parchment-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 40px;
+  position: relative;
+  z-index: 100;
+  font-family: var(--font-primary);
+}
+
+.parchment-nav .nav-links {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.parchment-nav .nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.parchment-nav .nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.parchment-nav .nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--text-primary);
+  transition: width 0.3s ease;
+}
+
+.parchment-nav .nav-links a:hover::after {
+  width: 100%;
+}
+
+.parchment-nav .nav-dots {
+  position: absolute;
+  right: 40px;
+  display: flex;
+  gap: 6px;
+}
+
+.parchment-nav .nav-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--parchment-light);
+}
+
+/* Era Badge */
+.era-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--accent-badge-bg);
+  color: var(--accent-badge-text);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+.era-badge .badge-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.era-badge .badge-title {
+  font-size: 1rem;
+}
+
+/* Parchment Button */
+.parchment-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-badge-bg);
+  color: var(--accent-badge-text);
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.parchment-btn:hover {
+  background: var(--text-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.parchment-btn.btn-outline {
+  background: transparent;
+  border: 2px solid var(--accent-badge-bg);
+  color: var(--accent-badge-bg);
+}
+
+.parchment-btn.btn-outline:hover {
+  background: var(--accent-badge-bg);
+  color: var(--accent-badge-text);
+}
+
+.parchment-btn.btn-quiz {
+  background: var(--quiz-highlight);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  padding: 14px 36px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.parchment-btn.btn-quiz:hover {
+  background: var(--accent-tan);
+  box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4);
+}
+
+/* Card Styles */
+.parchment-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.parchment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+/* Section Title */
+.section-title {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--accent-tan);
+  display: inline-block;
+}
+
+/* Scroll indicator animation */
+@keyframes float-arrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.scroll-indicator {
+  animation: float-arrow 2s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Override Ionic dark mode for parchment pages */
+.parchment-page {
+  --ion-background-color: #c5a882;
+  --ion-text-color: #2d1e0f;
+  --background: #c5a882;
+}
+
+.parchment-page ion-content {
+  --background: transparent;
+}

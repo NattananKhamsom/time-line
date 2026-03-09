@@ -1,332 +1,355 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-        </ion-buttons>
-        <ion-title>ยุคก่อนประวัติศาสตร์</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">ยุคก่อนประวัติศาสตร์</ion-title>
-        </ion-toolbar>
-      </ion-header>
+  <ion-page class="parchment-page">
+    <ion-content :fullscreen="true">
+      <div class="era-page parchment-bg">
+        <!-- Navigation -->
+        <NavBar :showBack="true" eraTitle="ยุคก่อนประวัติศาสตร์" />
 
-      <div class="era-container">
-        <!-- Header -->
-        <div class="era-header">
-          <h1>ยุคก่อนประวัติศาสตร์</h1>
-          <p class="era-date">2.5 ล้านปีก่อน - 3,000 ปีก่อน ค.ศ.</p>
-        </div>
-
-        <!-- Main Description -->
-        <div class="section">
-          <h2>📖 บทนำ</h2>
-          <p>
-            จุดเริ่มต้นของเผ่าพันธุ์ Homo sapiens ในทวีปแอฟริกา มนุษย์เริ่มเรียนรู้การใช้ไฟ การสร้างเครื่องมือหิน 
-            และการอยู่ร่วมกันเป็นสังคมล่าสัตว์และหาของป่า แล้วค่อยๆ พัฒนาไปสู่ยุคเกษตรกรรม เป็นจุดเปลี่ยนครั้งใหญ่ 
-            ที่ทำให้มนุษย์เริ่มสร้างสรรค์อารยธรรมอย่างแท้จริง
-          </p>
-        </div>
-
-        <!-- Key Points -->
-        <div class="section">
-          <h2>🎯 ประเด็นสำคัญ</h2>
-          <ul class="key-points-list">
-            <li>
-              <span class="point-title">การปฏิวัติเกษตรกรรม</span>
-              <p>มนุษย์เริ่มปลูกพืชและเลี้ยงสัตว์แทนการล่าสัตว์ เปลี่ยนจากชีวิตเร่ร่อนมาเป็นการตั้งถิ่นฐาน</p>
-            </li>
-            <li>
-              <span class="point-title">การตั้งถิ่นฐานครั้งแรกในเมโสโปเตเมีย</span>
-              <p>หุบเขาแม่น้ำไทกรีส-ยูเฟรตส์เป็นแหล่งอารยธรรมแรกของมนุษยชาติที่มีเขตเมืองและระบบการเกษตร</p>
-            </li>
-            <li>
-              <span class="point-title">การประดิษฐ์ล้อและเครื่องปั้นดินเผา</span>
-              <p>ล้อได้มาจากไม่รู้จักของป่า และช่วยให้การขนส่งและดำเนินการเกษตรสะดวกขึ้นมาก</p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Timeline/Events -->
-        <div class="section">
-          <h2>📍 เหตุการณ์สำคัญ</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-year">~2.5 ล้านปีก่อน</div>
-              <div class="timeline-content">
-                <h3>แนวมนุษย์เกิดขึ้น</h3>
-                <p>ปรากฏตัวของ Homo habilis - มนุษย์ที่มีความสามารถในการใช้เครื่องมือ</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-year">~1.5 ล้านปีก่อน</div>
-              <div class="timeline-content">
-                <h3>ยุคหินเก่า (Paleolithic Age)</h3>
-                <p>การใช้ไฟเพิ่มขึ้น มนุษย์เริ่มอบอาหารและให้ความอบอุ่นมากขึ้น</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-year">~10,000 ปีก่อน</div>
-              <div class="timeline-content">
-                <h3>การปฏิวัติเกษตรกรรม (Neolithic Age)</h3>
-                <p>มนุษย์เริ่มปลูกพืชและเลี้ยงสัตว์ เปลี่ยนมาจากอาชีพล่าสัตว์อย่างสิ้นเชิน</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-year">~5,000 ปีก่อน</div>
-              <div class="timeline-content">
-                <h3>เจริญเติบโตของเมืองคนแรก</h3>
-                <p>มนุษย์สร้างเมืองเล็กๆ ในเมโสโปเตเมีย และค่อยๆ พัฒนาระบบการปกครอง</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-year">~3,000 ปีก่อน</div>
-              <div class="timeline-content">
-                <h3>ก่อนประวัติศาสตร์สิ้นสุด</h3>
-                <p>มนุษย์เริ่มมีการเขียนบันทึก (Writing System) ซึ่งทำให้เข้าสู่ยุคประวัติศาสตร์จริงๆ</p>
-              </div>
-            </div>
+        <!-- Hero Header -->
+        <div class="era-hero">
+          <h1 class="era-main-title">ยุคก่อนประวัติศาสตร์</h1>
+          <p class="era-main-date">2.5 ล้านปีก่อน - 3,000 ปีก่อน ค.ศ.</p>
+          <div class="era-badge-hero">
+            <span class="badge-number">01</span>
+            <span class="badge-title">ยุคก่อนประวัติศาสตร์</span>
           </div>
         </div>
 
-        <!-- Image Placeholder -->
-        <div class="section">
-          <h2>🖼️ ภาพประกอบ</h2>
-          <div class="image-placeholder">
-            <ion-icon icon="image" style="font-size: 48px; color: #d4af37;"></ion-icon>
-            <p>เพิ่มรูปภาพประกอบของยุคก่อนประวัติศาสตร์ได้ที่นี่</p>
+        <!-- Content -->
+        <div class="era-content">
+          <!-- Introduction -->
+          <div class="content-section" data-aos="fade-up">
+            <h2 class="section-label">📖 บทนำ</h2>
+            <p>
+              จุดเริ่มต้นของเผ่าพันธุ์ Homo sapiens ในทวีปแอฟริกา มนุษย์เริ่มเรียนรู้การใช้ไฟ การสร้างเครื่องมือหิน 
+              และการอยู่ร่วมกันเป็นสังคมล่าสัตว์และหาของป่า แล้วค่อยๆ พัฒนาไปสู่ยุคเกษตรกรรม เป็นจุดเปลี่ยนครั้งใหญ่ 
+              ที่ทำให้มนุษย์เริ่มสร้างสรรค์อารยธรรมอย่างแท้จริง
+            </p>
           </div>
-        </div>
 
-        <!-- Additional Info -->
-        <div class="section">
-          <h2>💡 ข้อมูลเพิ่มเติม</h2>
-          <p>
-            ยุคก่อนประวัติศาสตร์เป็นช่วงเวลาที่ยาวนานที่สุดในประวัติศาสตร์มนุษย์ ตั้งแต่ประมาณ 2.5 ล้านปีก่อนปัจจุบัน 
-            จึงเหลือเวลาเพียง 3,000 ปีเท่านั้น (ก่อนที่มนุษย์จะมีการเขียนบันทึก)
-          </p>
-          <p>
-            ในช่วงเวลานี้ มนุษย์ได้พัฒนาเค้นศักยภาพจากสัตว์สายพันธุ์มนุษย์ไปเป็นมนุษย์สมบูรณ์ที่มีสติปัญญาและขุมพลศักดิ์สูง
-          </p>
+          <!-- Key Points -->
+          <div class="content-section" data-aos="fade-up">
+            <h2 class="section-label">🎯 ประเด็นสำคัญ</h2>
+            <div class="key-points">
+              <div class="key-point-card">
+                <h3>การปฏิวัติเกษตรกรรม</h3>
+                <p>มนุษย์เริ่มปลูกพืชและเลี้ยงสัตว์แทนการล่าสัตว์ เปลี่ยนจากชีวิตเร่ร่อนมาเป็นการตั้งถิ่นฐาน</p>
+              </div>
+              <div class="key-point-card">
+                <h3>การตั้งถิ่นฐานครั้งแรกในเมโสโปเตเมีย</h3>
+                <p>หุบเขาแม่น้ำไทกรีส-ยูเฟรตส์เป็นแหล่งอารยธรรมแรกของมนุษยชาติที่มีเขตเมืองและระบบการเกษตร</p>
+              </div>
+              <div class="key-point-card">
+                <h3>การประดิษฐ์ล้อและเครื่องปั้นดินเผา</h3>
+                <p>ล้อได้มาจากไม่รู้จักของป่า และช่วยให้การขนส่งและดำเนินการเกษตรสะดวกขึ้นมาก</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Events -->
+          <div class="content-section" data-aos="fade-up">
+            <h2 class="section-label">📍 เหตุการณ์สำคัญ</h2>
+            <div class="era-timeline">
+              <div class="era-tl-item" v-for="(event, idx) in timelineEvents" :key="idx">
+                <div class="era-tl-year">{{ event.year }}</div>
+                <div class="era-tl-content">
+                  <h3>{{ event.title }}</h3>
+                  <p>{{ event.desc }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Info -->
+          <div class="content-section" data-aos="fade-up">
+            <h2 class="section-label">💡 ข้อมูลเพิ่มเติม</h2>
+            <p>
+              ยุคก่อนประวัติศาสตร์เป็นช่วงเวลาที่ยาวนานที่สุดในประวัติศาสตร์มนุษย์ ตั้งแต่ประมาณ 2.5 ล้านปีก่อนปัจจุบัน 
+              จึงเหลือเวลาเพียง 3,000 ปีเท่านั้น (ก่อนที่มนุษย์จะมีการเขียนบันทึก)
+            </p>
+            <p>
+              ในช่วงเวลานี้ มนุษย์ได้พัฒนาจากสัตว์สายพันธุ์มนุษย์ไปเป็นมนุษย์สมบูรณ์ที่มีสติปัญญาและความสามารถสูง
+            </p>
+          </div>
+
+          <!-- Quiz Section -->
+          <div class="quiz-cta" data-aos="fade-up">
+            <h2>📝 ทดสอบความรู้</h2>
+            <p>คุณพร้อมทดสอบความรู้เกี่ยวกับยุคก่อนประวัติศาสตร์แล้วหรือยัง?</p>
+            <button class="parchment-btn btn-quiz" @click="showQuiz = true">
+              เริ่มทำแบบทดสอบ →
+            </button>
+            <div class="previous-score" v-if="previousScore !== null">
+              <p>คะแนนครั้งก่อน: {{ previousScore.score }}/{{ previousScore.totalQuestions }}</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Quiz Modal -->
+      <QuizModal 
+        eraId="prehistoric"
+        :isOpen="showQuiz"
+        @close="showQuiz = false"
+        @completed="onQuizCompleted"
+      />
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonButtons,
-  IonBackButton,
-  IonIcon
-} from '@ionic/vue';
-import { image } from 'ionicons/icons';
+import { ref, onMounted } from 'vue';
+import { IonPage, IonContent } from '@ionic/vue';
+import NavBar from '../components/NavBar.vue';
+import QuizModal from '../components/QuizModal.vue';
+import { getUserEraScore, type QuizScore } from '../../auth/firestore-service';
+import { firebaseAuth } from '../../auth/auth-web';
+
+const showQuiz = ref(false);
+const previousScore = ref<QuizScore | null>(null);
+
+const timelineEvents = [
+  { year: '~2.5 ล้านปีก่อน', title: 'แนวมนุษย์เกิดขึ้น', desc: 'ปรากฏตัวของ Homo habilis - มนุษย์ที่มีความสามารถในการใช้เครื่องมือ' },
+  { year: '~1.5 ล้านปีก่อน', title: 'ยุคหินเก่า (Paleolithic Age)', desc: 'การใช้ไฟเพิ่มขึ้น มนุษย์เริ่มอบอาหารและให้ความอบอุ่นมากขึ้น' },
+  { year: '~10,000 ปีก่อน', title: 'การปฏิวัติเกษตรกรรม (Neolithic Age)', desc: 'มนุษย์เริ่มปลูกพืชและเลี้ยงสัตว์ เปลี่ยนมาจากอาชีพล่าสัตว์' },
+  { year: '~5,000 ปีก่อน', title: 'เจริญเติบโตของเมืองแรก', desc: 'มนุษย์สร้างเมืองเล็กๆ ในเมโสโปเตเมีย และค่อยๆ พัฒนาระบบการปกครอง' },
+  { year: '~3,000 ปีก่อน', title: 'ก่อนประวัติศาสตร์สิ้นสุด', desc: 'มนุษย์เริ่มมีการเขียนบันทึก (Writing System) ซึ่งทำให้เข้าสู่ยุคประวัติศาสตร์' }
+];
+
+const onQuizCompleted = (score: number) => {
+  loadPreviousScore();
+};
+
+const loadPreviousScore = async () => {
+  try {
+    const user = firebaseAuth.currentUser;
+    if (user) {
+      previousScore.value = await getUserEraScore(user.uid, 'prehistoric');
+    }
+  } catch (e) { console.error(e); }
+};
+
+onMounted(() => {
+  loadPreviousScore();
+  if ((window as any).AOS) {
+    (window as any).AOS.init({ duration: 1000, once: true });
+  }
+});
 </script>
 
 <style scoped>
-.era-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
+.era-page {
+  font-family: 'Kanit', sans-serif;
+  color: #2d1e0f;
+  min-height: 100vh;
+  padding-bottom: 60px;
 }
 
-/* Header */
-.era-header {
+/* Hero */
+.era-hero {
   text-align: center;
-  margin-bottom: 40px;
-  padding: 20px 0;
-  border-bottom: 2px solid #f0f0f0;
+  padding: 60px 20px 40px;
+  position: relative;
 }
 
-.era-header h1 {
-  font-size: 32px;
-  color: #333;
-  margin: 0 0 10px 0;
+.era-main-title {
+  font-family: 'Kanit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #2d1e0f;
+  margin: 0 0 8px;
 }
 
-.era-date {
-  font-size: 16px;
-  color: #d4af37;
+.era-main-date {
+  font-size: 1.1rem;
+  color: #6b5744;
+  font-weight: 300;
+  margin: 0 0 20px;
+}
+
+.era-badge-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #2d1e0f;
+  color: #e8d5b7;
+  padding: 10px 24px;
+  border-radius: 10px;
   font-weight: 600;
-  margin: 0;
 }
 
-/* Sections */
-.section {
-  margin-bottom: 40px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #e0e0e0;
+.badge-number { font-size: 1.2rem; font-weight: 700; }
+.badge-title { font-size: 1rem; }
+
+/* Content */
+.era-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-.section h2 {
-  font-size: 24px;
-  color: #333;
-  margin: 0 0 20px 0;
+.content-section {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(138, 112, 84, 0.2);
+}
+
+.section-label {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d1e0f;
+  margin: 0 0 20px;
   padding-bottom: 10px;
-  border-bottom: 3px solid #d4af37;
+  border-bottom: 3px solid #c9a96e;
   display: inline-block;
 }
 
-.section p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #666;
-  margin-bottom: 15px;
+.content-section p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #4a3728;
+  margin-bottom: 12px;
   text-align: justify;
 }
 
 /* Key Points */
-.key-points-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.key-points {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.key-points-list li {
-  background: #f9f9f9;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-left: 5px solid #d4af37;
-  border-radius: 4px;
+.key-point-card {
+  background: rgba(232, 213, 183, 0.6);
+  padding: 20px 24px;
+  border-left: 5px solid #c9a96e;
+  border-radius: 0 8px 8px 0;
 }
 
-.point-title {
+.key-point-card h3 {
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #333;
-  font-size: 16px;
-  display: block;
-  margin-bottom: 8px;
+  color: #2d1e0f;
+  margin: 0 0 8px;
 }
 
-.key-points-list li p {
+.key-point-card p {
   margin: 0;
-  font-size: 14px;
-  color: #777;
+  font-size: 0.95rem;
+  color: #6b5744;
 }
 
-/* Timeline */
-.timeline {
+/* Era Timeline */
+.era-timeline {
   position: relative;
   padding-left: 40px;
 }
 
-.timeline::before {
+.era-timeline::before {
   content: '';
   position: absolute;
   left: 9px;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #d4af37;
+  background: #c9a96e;
 }
 
-.timeline-item {
+.era-tl-item {
   position: relative;
-  margin-bottom: 30px;
-  padding-left: 40px;
+  margin-bottom: 28px;
+  padding-left: 36px;
 }
 
-.timeline-item::before {
+.era-tl-item::before {
   content: '';
   position: absolute;
   left: -31px;
   top: 5px;
-  width: 20px;
-  height: 20px;
-  background: #d4af37;
-  border: 3px solid white;
+  width: 18px;
+  height: 18px;
+  background: #c9a96e;
+  border: 3px solid #c5a882;
   border-radius: 50%;
-  box-shadow: 0 0 0 2px #d4af37;
+  box-shadow: 0 0 0 2px #c9a96e;
 }
 
-.timeline-year {
+.era-tl-year {
   font-weight: 700;
-  color: #d4af37;
-  font-size: 13px;
+  color: #c9a96e;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
-.timeline-content h3 {
-  margin: 8px 0;
-  color: #333;
-  font-size: 18px;
+.era-tl-content h3 {
+  margin: 6px 0;
+  color: #2d1e0f;
+  font-size: 1.1rem;
 }
 
-.timeline-content p {
-  margin: 8px 0 0 0;
-  color: #666;
-  font-size: 14px;
+.era-tl-content p {
+  margin: 6px 0 0;
+  color: #6b5744;
+  font-size: 0.95rem;
 }
 
-/* Image Placeholder */
-.image-placeholder {
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 2px dashed #ccc;
-  color: #999;
-}
-
-.image-placeholder p {
-  margin-top: 12px;
-  font-size: 14px;
+/* Quiz CTA */
+.quiz-cta {
   text-align: center;
+  padding: 40px 24px;
+  background: rgba(232, 213, 183, 0.5);
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+.quiz-cta h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d1e0f;
+  margin: 0 0 8px;
+}
+
+.quiz-cta p {
+  font-size: 1rem;
+  color: #6b5744;
+  margin: 0 0 24px;
+}
+
+.parchment-btn.btn-quiz {
+  background: #c9a96e;
+  color: #2d1e0f;
+  font-size: 1.1rem;
+  padding: 14px 36px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif;
+  transition: all 0.3s;
+}
+
+.parchment-btn.btn-quiz:hover {
+  background: #a88b6a;
+  box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4);
+  transform: translateY(-2px);
+}
+
+.previous-score {
+  margin-top: 16px;
+}
+
+.previous-score p {
+  font-size: 0.95rem;
+  color: #4a3728;
+  margin: 0;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .era-container {
-    padding: 15px;
-  }
-
-  .era-header h1 {
-    font-size: 24px;
-  }
-
-  .section h2 {
-    font-size: 20px;
-  }
-
-  .section p {
-    font-size: 14px;
-  }
-
-  .timeline {
-    padding-left: 30px;
-  }
-
-  .timeline-item {
-    padding-left: 30px;
-  }
-
-  .timeline-item::before {
-    left: -26px;
-    width: 16px;
-    height: 16px;
-  }
-
-  .image-placeholder {
-    height: 200px;
-  }
+  .era-main-title { font-size: 1.8rem; }
+  .era-content { padding: 0 16px; }
+  .section-label { font-size: 1.2rem; }
 }
 </style>
