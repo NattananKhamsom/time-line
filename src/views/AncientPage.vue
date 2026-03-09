@@ -71,7 +71,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/mesopotamia.jpg">
                   </div>
                   <div class="card-body">
                     <h3>เมโสโปเตเมีย</h3>
@@ -81,7 +81,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/egypt.jpg">
                   </div>
                   <div class="card-body">
                     <h3>อียิปต์</h3>
@@ -91,7 +91,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/greek.jpg">
                   </div>
                   <div class="card-body">
                     <h3>กรีก</h3>

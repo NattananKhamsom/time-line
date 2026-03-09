@@ -69,7 +69,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/feudalism.jpg">
                   </div>
                   <div class="card-body">
                     <h3>ระบบศักดินา</h3>
@@ -79,7 +79,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/crusade.jpg">
                   </div>
                   <div class="card-body">
                     <h3>สงครามครูเสด</h3>
@@ -89,7 +89,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/plague.jpg">
                   </div>
                   <div class="card-body">
                     <h3>กาฬโรค</h3>

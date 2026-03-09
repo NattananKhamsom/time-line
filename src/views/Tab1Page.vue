@@ -114,8 +114,7 @@
             </div>
 
              <div class="tl-image">
-              <img src="https://mad.hypotheses.org/files/2014/12/viallon-destriers-Fig-4-550x304.gif"
-                alt="Ancient Civilizations">
+              <img src="/images/Ancient Civilizations.jpg">
             </div>
             <div class="tl-dot dot-03"></div>
             <div class="tl-card" @click="navigateTo('middle-ages')">

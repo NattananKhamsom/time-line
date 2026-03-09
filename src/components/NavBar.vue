@@ -7,10 +7,10 @@
     </div>
     <div class="nav-era-title" v-if="eraTitle">{{ eraTitle }}</div>
     <div class="nav-links">
-      <a href="#" @click.prevent="$router.push('/tabs/tab1')">About</a>
+      <a href="#" @click.prevent="showAboutAlert">About</a>
       <!-- Era Dropdown -->
-      <div class="nav-dropdown" @mouseenter="eraOpen = true" @mouseleave="eraOpen = false">
-        <a href="#" @click.prevent="goToTimelineSection" class="dropdown-trigger">
+      <div class="nav-dropdown">
+        <a href="#" @click.prevent.stop="toggleDropdown" class="dropdown-trigger">
           Era
           <svg class="dropdown-chevron" :class="{ rotated: eraOpen }" width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -36,13 +36,36 @@
           </div>
         </Transition>
       </div>
-      <a href="#" @click.prevent>Contact</a>
+      <a href="#" @click.prevent="scrollToFooter">Contact</a>
     </div>
     <div class="nav-dots">
       <span></span>
       <span></span>
       <span></span>
     </div>
+
+    <!-- About Alert Modal -->
+    <Transition name="fade">
+      <div class="about-overlay" v-if="isAboutOpen" @click.self="isAboutOpen = false">
+        <div class="about-modal parchment-bg">
+          <div class="about-header">
+            <h3>📜 เกี่ยวกับเว็บไซต์นี้</h3>
+            <button class="close-btn" @click="isAboutOpen = false">✕</button>
+          </div>
+          <div class="about-content">
+            <p><strong>Timeline — The Human Odyssey</strong></p>
+            <p>เว็บไซต์นี้ถูกสร้างขึ้นเพื่อเป็นแหล่งเรียนรู้แบบ Interactive Scrolling ที่จะพาทุกท่านเดินทางผ่านประวัติศาสตร์ของมนุษยชาติ ตั้งแต่ยุคก่อนประวัติศาสตร์จนถึงยุคข้อมูลข่าวสารในปัจจุบัน</p>
+            <p>นอกจากเนื้อหาเชิงลึกแล้ว ยังมีแบบทดสอบสะสมคะแนนในแต่ละยุคเพื่อให้ผู้เรียนได้สนุกไปกับการหาความรู้ และเพิ่มชื่อตัวเองลงในกระดานคะแนน!</p>
+            <div class="about-tech">
+              <span>พัฒนาด้วย Vue 3 & Ionic Framework</span>
+            </div>
+          </div>
+          <div class="about-footer">
+            <button class="parchment-btn" @click="isAboutOpen = false">ปิดหน้าต่าง</button>
+          </div>
+        </div>
+      </div>
+    </Transition>
   </nav>
 </template>
 
@@ -57,6 +80,7 @@ defineProps<{
 
 const router = useRouter();
 const eraOpen = ref(false);
+const isAboutOpen = ref(false);
 
 const eraList = [
   { id: 'prehistoric', label: 'ยุคก่อนประวัติศาสตร์', icon: '🪨', date: '2.5M - 3,000 BCE' },
@@ -75,12 +99,28 @@ const goToEra = (id: string) => {
   router.push(`/era/${id}`);
 };
 
-const goToTimelineSection = () => {
-  const el = document.getElementById('timeline-section');
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
-  }
+const toggleDropdown = () => {
   eraOpen.value = !eraOpen.value;
+};
+
+const showAboutAlert = () => {
+  isAboutOpen.value = true;
+};
+
+const scrollToFooter = () => {
+  const footerEl = document.querySelector('footer, .parchment-footer');
+  if (footerEl) {
+    footerEl.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    // If we're not on the main page where the footer is, 
+    // we can navigate to the main page and then scroll.
+    router.push('/tabs/tab1').then(() => {
+      setTimeout(() => {
+        const el = document.querySelector('footer, .parchment-footer');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    });
+  }
 };
 </script>
 
@@ -163,6 +203,8 @@ const goToTimelineSection = () => {
 /* Dropdown */
 .nav-dropdown {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-chevron {
@@ -190,7 +232,11 @@ const goToTimelineSection = () => {
   box-shadow: 0 12px 40px rgba(45, 30, 15, 0.25);
   padding: 8px;
   backdrop-filter: blur(16px);
-  z-index: 999;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: default;
 }
 
 .dropdown-menu::before {
@@ -302,5 +348,113 @@ const goToTimelineSection = () => {
   .dropdown-menu {
     min-width: 250px;
   }
+}
+
+/* About Modal */
+.about-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(45, 30, 15, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.about-modal {
+  background:
+    linear-gradient(135deg,
+      rgba(232, 213, 183, 0.98) 0%,
+      rgba(212, 184, 150, 0.98) 100%
+    );
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  border: 1px solid rgba(138, 112, 84, 0.3);
+  color: #2d1e0f;
+  text-align: left;
+}
+
+.about-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(138, 112, 84, 0.2);
+  padding-bottom: 10px;
+}
+
+.about-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: #4a3728;
+  cursor: pointer;
+}
+
+.about-content p {
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.about-tech {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(138, 112, 84, 0.3);
+  text-align: center;
+}
+
+.about-tech span {
+  display: inline-block;
+  background: rgba(45, 30, 15, 0.1);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.about-footer {
+  margin-top: 24px;
+  text-align: right;
+}
+
+.parchment-btn {
+  background: #c9a96e;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  color: #2d1e0f;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.parchment-btn:hover {
+  background: #a88b6a;
+  box-shadow: 0 4px 12px rgba(201, 169, 110, 0.3);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

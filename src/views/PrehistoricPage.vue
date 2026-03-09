@@ -77,7 +77,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/axe.jpg">
                   </div>
                   <div class="card-body">
                     <h3>เครื่องมือหิน</h3>
@@ -87,7 +87,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/campfire.jpg">
                   </div>
                   <div class="card-body">
                     <h3>การใช้ไฟ</h3>
@@ -97,7 +97,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/gathering.jpg">
                   </div>
                   <div class="card-body">
                     <h3>การทำเกษตร</h3>
