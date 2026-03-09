@@ -10,7 +10,7 @@
       <a href="#" @click.prevent="$router.push('/tabs/tab1')">About</a>
       <!-- Era Dropdown -->
       <div class="nav-dropdown" @mouseenter="eraOpen = true" @mouseleave="eraOpen = false">
-        <a href="#" @click.prevent="eraOpen = !eraOpen" class="dropdown-trigger">
+        <a href="#" @click.prevent="goToTimelineSection" class="dropdown-trigger">
           Era
           <svg class="dropdown-chevron" :class="{ rotated: eraOpen }" width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -73,6 +73,14 @@ const goBack = () => {
 
 const goToEra = (id: string) => {
   router.push(`/era/${id}`);
+};
+
+const goToTimelineSection = () => {
+  const el = document.getElementById('timeline-section');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+  eraOpen.value = !eraOpen.value;
 };
 </script>
 
