@@ -33,6 +33,7 @@ import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './theme/parchment-theme.css';
 
 // Add smooth scrolling to html and body
 document.documentElement.style.scrollBehavior = 'smooth';
