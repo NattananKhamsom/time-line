@@ -70,7 +70,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/renaissance.jpg">
                   </div>
                   <div class="card-body">
                     <h3>ศิลปะยุคเรอเนซองส์</h3>
@@ -80,7 +80,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/printing-press.jpg">
                   </div>
                   <div class="card-body">
                     <h3>แท่นพิมพ์</h3>
@@ -90,7 +90,7 @@
 
                 <div class="image-card">
                   <div class="img-wrapper">
-                    <img src="/images/train.jpg">
+                    <img src="/images/exploration.jpg">
                   </div>
                   <div class="card-body">
                     <h3>การสำรวจโลก</h3>
