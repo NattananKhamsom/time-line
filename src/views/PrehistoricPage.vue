@@ -14,6 +14,9 @@
             <span class="badge-title">ยุคก่อนประวัติศาสตร์</span>
           </div>
         </div>
+        <div class="era-hero-image">
+  <img src="https://sacredland.org/wp-content/uploads/2019/08/Lascaux_painting.jpg" alt="Lascaux cave paintings">
+</div>
 
         <!-- Content -->
         <div class="era-content">
@@ -26,6 +29,38 @@
               ที่ทำให้มนุษย์เริ่มสร้างสรรค์อารยธรรมอย่างแท้จริง
             </p>
           </div>
+
+          <!-- Stone Age Periods -->
+<div class="content-section" data-aos="fade-up">
+  <h2 class="section-label">🪨 การแบ่งยุคหิน</h2>
+  <div class="key-points">
+    
+    <div class="key-point-card">
+      <h3>ยุคหินเก่า (Paleolithic)</h3>
+      <p>
+        เป็นช่วงเวลาที่มนุษย์ยังดำรงชีวิตด้วยการล่าสัตว์และเก็บของป่า
+        ใช้เครื่องมือหินหยาบ ๆ และอาศัยอยู่ในถ้ำหรือที่พักชั่วคราว
+      </p>
+    </div>
+
+    <div class="key-point-card">
+      <h3>ยุคหินกลาง (Mesolithic)</h3>
+      <p>
+        มนุษย์เริ่มพัฒนาเครื่องมือที่มีขนาดเล็กและละเอียดขึ้น
+        เริ่มมีการตั้งชุมชนเล็ก ๆ ใกล้แม่น้ำและแหล่งอาหาร
+      </p>
+    </div>
+
+    <div class="key-point-card">
+      <h3>ยุคหินใหม่ (Neolithic)</h3>
+      <p>
+        มนุษย์เริ่มทำเกษตรกรรม ปลูกพืช เลี้ยงสัตว์
+        และสร้างหมู่บ้านถาวร ถือเป็นจุดเริ่มต้นของอารยธรรม
+      </p>
+    </div>
+
+  </div>
+</div>
 
           <!-- Key Points -->
           <div class="content-section" data-aos="fade-up">
@@ -45,6 +80,59 @@
               </div>
             </div>
           </div>
+
+          <!-- Lifestyle -->
+<div class="content-section" data-aos="fade-up">
+  <h2 class="section-label">🏹 วิถีชีวิตของมนุษย์</h2>
+  <p>
+    มนุษย์ยุคก่อนประวัติศาสตร์ใช้ชีวิตแบบเร่ร่อน โดยย้ายถิ่นตามแหล่งอาหาร
+    เช่น สัตว์ป่า ผลไม้ และพืชป่า พวกเขาใช้เครื่องมือหิน กระดูก และไม้
+    ในการล่าสัตว์ ตัดเนื้อ และทำกิจกรรมต่าง ๆ
+  </p>
+
+  <p>
+    เมื่อมนุษย์ค้นพบการควบคุมไฟ ชีวิตก็เปลี่ยนไปอย่างมาก
+    ไฟช่วยให้สามารถปรุงอาหาร ป้องกันสัตว์ร้าย และให้ความอบอุ่นในเวลากลางคืน
+  </p>
+
+  <p>
+    นอกจากนี้ มนุษย์ยังเริ่มมีความเชื่อทางจิตวิญญาณ
+    เช่น การฝังศพ การวาดภาพบนผนังถ้ำ และพิธีกรรมต่าง ๆ
+  </p>
+</div>
+
+<!-- Important Inventions -->
+<div class="content-section" data-aos="fade-up">
+  <h2 class="section-label">⚙️ สิ่งประดิษฐ์สำคัญ</h2>
+
+  <div class="key-points">
+    
+    <div class="key-point-card">
+      <h3>การใช้ไฟ</h3>
+      <p>
+        การควบคุมไฟเป็นหนึ่งในความก้าวหน้าที่สำคัญที่สุดของมนุษย์
+        ช่วยให้สามารถปรุงอาหาร ให้แสงสว่าง และป้องกันสัตว์ป่า
+      </p>
+    </div>
+
+    <div class="key-point-card">
+      <h3>เครื่องมือหิน</h3>
+      <p>
+        มนุษย์สร้างเครื่องมือจากหิน เช่น มีดหิน หอก และขวาน
+        เพื่อใช้ในการล่าสัตว์และตัดสิ่งของ
+      </p>
+    </div>
+
+    <div class="key-point-card">
+      <h3>เครื่องปั้นดินเผา</h3>
+      <p>
+        ในยุคหินใหม่ มนุษย์เริ่มทำเครื่องปั้นดินเผา
+        เพื่อใช้เก็บอาหาร น้ำ และเมล็ดพืช
+      </p>
+    </div>
+
+  </div>
+</div>
 
           <!-- Timeline Events -->
           <div class="content-section" data-aos="fade-up">
@@ -109,11 +197,36 @@ const showQuiz = ref(false);
 const previousScore = ref<QuizScore | null>(null);
 
 const timelineEvents = [
-  { year: '~2.5 ล้านปีก่อน', title: 'แนวมนุษย์เกิดขึ้น', desc: 'ปรากฏตัวของ Homo habilis - มนุษย์ที่มีความสามารถในการใช้เครื่องมือ' },
-  { year: '~1.5 ล้านปีก่อน', title: 'ยุคหินเก่า (Paleolithic Age)', desc: 'การใช้ไฟเพิ่มขึ้น มนุษย์เริ่มอบอาหารและให้ความอบอุ่นมากขึ้น' },
-  { year: '~10,000 ปีก่อน', title: 'การปฏิวัติเกษตรกรรม (Neolithic Age)', desc: 'มนุษย์เริ่มปลูกพืชและเลี้ยงสัตว์ เปลี่ยนมาจากอาชีพล่าสัตว์' },
-  { year: '~5,000 ปีก่อน', title: 'เจริญเติบโตของเมืองแรก', desc: 'มนุษย์สร้างเมืองเล็กๆ ในเมโสโปเตเมีย และค่อยๆ พัฒนาระบบการปกครอง' },
-  { year: '~3,000 ปีก่อน', title: 'ก่อนประวัติศาสตร์สิ้นสุด', desc: 'มนุษย์เริ่มมีการเขียนบันทึก (Writing System) ซึ่งทำให้เข้าสู่ยุคประวัติศาสตร์' }
+  {
+    year: '~2.5 ล้านปีก่อน',
+    title: 'Homo habilis',
+    desc: 'มนุษย์ยุคแรกเริ่มใช้เครื่องมือหินแบบง่ายในการดำรงชีวิต'
+  },
+  {
+    year: '~1.8 ล้านปีก่อน',
+    title: 'Homo erectus',
+    desc: 'มนุษย์เริ่มเดินทางออกจากทวีปแอฟริกาไปยังเอเชียและยุโรป'
+  },
+  {
+    year: '~400,000 ปีก่อน',
+    title: 'การควบคุมไฟ',
+    desc: 'มนุษย์สามารถควบคุมไฟเพื่อใช้ปรุงอาหารและให้ความอบอุ่น'
+  },
+  {
+    year: '~40,000 ปีก่อน',
+    title: 'ศิลปะถ้ำ',
+    desc: 'มนุษย์เริ่มสร้างงานศิลปะบนผนังถ้ำ เช่น ภาพสัตว์และการล่าสัตว์'
+  },
+  {
+    year: '~10,000 ปีก่อน',
+    title: 'การปฏิวัติเกษตรกรรม',
+    desc: 'มนุษย์เริ่มปลูกพืชและเลี้ยงสัตว์ เกิดหมู่บ้านถาวร'
+  },
+  {
+    year: '~3,000 ปีก่อน ค.ศ.',
+    title: 'การเกิดตัวอักษร',
+    desc: 'การเขียนเกิดขึ้นในเมโสโปเตเมีย ทำให้สิ้นสุดยุคก่อนประวัติศาสตร์'
+  }
 ];
 
 const onQuizCompleted = (score: number) => {
@@ -143,6 +256,26 @@ onMounted(() => {
   color: #2d1e0f;
   min-height: 100vh;
   padding-bottom: 60px;
+
+  background-image: url('https://snohetta.b-cdn.net/uploads/oa/lascaux-cave-centre-iv/2012119_OS_N280_webimageport.jpg?width=500&height=750&quality=85&crop=1440%2C2160%2C0%2C0');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.era-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(245, 236, 214, 0.9); /* parchment overlay */
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+.era-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero */
@@ -150,6 +283,18 @@ onMounted(() => {
   text-align: center;
   padding: 60px 20px 40px;
   position: relative;
+}
+.era-hero-image {
+  margin: 30px auto 40px;
+  max-width: 700px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.era-hero-image img {
+  width: 100%;
+  display: block;
 }
 
 .era-main-title {
@@ -276,7 +421,7 @@ onMounted(() => {
 
 .era-tl-year {
   font-weight: 700;
-  color: #c9a96e;
+  color: #ffffff;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
