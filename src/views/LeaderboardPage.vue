@@ -1,18 +1,61 @@
 <template>
-  <ion-page class="parchment-page">
+  <ion-page class="parchment-page" ref="pageRef">
     <ion-content :fullscreen="true">
       <div class="leaderboard-page parchment-bg">
         <NavBar :showBack="true" eraTitle="กระดานคะแนน" />
 
         <div class="lb-header">
           <h1>🏆 กระดานคะแนน</h1>
-          <p>ผู้เล่นที่ได้คะแนนสูงสุดจากแบบทดสอบทุกยุค</p>
+          <p>ดูคะแนนสูงสุดจากแบบทดสอบทุกยุค</p>
         </div>
 
-        <!-- Loading -->
-        <div class="lb-loading" v-if="loading">
-          <div class="spinner-ring"></div>
-          <p>กำลังโหลด...</p>
+        <!-- User's era scores with comparison -->
+        <div class="user-scores-section" v-if="!loading && currentUserId && userEraScores.length > 0">
+          <h2 class="section-title">📊 คะแนนของคุณแยกตามยุค</h2>
+          <div class="era-scores-grid">
+            <div 
+              class="era-score-card" 
+              v-for="score in userEraScores"
+              :key="score.eraId"
+            >
+              <div class="era-name">{{ score.displayName || score.eraId }}</div>
+              <div class="era-stats">
+                <div class="score-display">
+                  <span class="score-value">{{ score.score }}</span>
+                  <span class="score-max">/{{ score.totalQuestions }}</span>
+                </div>
+                <div class="score-percentage">
+                  {{ Math.round((score.score / score.totalQuestions) * 100) }}%
+                </div>
+              </div>
+              <div class="score-bar">
+                <div class="score-fill" :style="{ width: (score.score / score.totalQuestions) * 100 + '%' }"></div>
+              </div>
+              
+              <!-- Comparison stats -->
+              <div class="comparison-stats" v-if="eraComparisons[score.eraId]">
+                <div class="comparison-row">
+                  <span class="comparison-label">เฉลี่ย:</span>
+                  <span class="comparison-value">{{ eraComparisons[score.eraId].avgScore.toFixed(1) }}/{{ score.totalQuestions }}</span>
+                </div>
+                <div class="comparison-row">
+                  <span class="comparison-label">อันดับ:</span>
+                  <span class="comparison-value rank-badge">{{ eraComparisons[score.eraId].userRank }}/{{ eraComparisons[score.eraId].totalPlayers }}</span>
+                </div>
+                <div class="comparison-row">
+                  <span class="comparison-label">สูงสุด:</span>
+                  <span class="comparison-value">{{ eraComparisons[score.eraId].maxScore }}/{{ score.totalQuestions }}</span>
+                </div>
+              </div>
+              
+              <div class="score-meta">{{ new Date(score.completedAt).toLocaleDateString('th-TH') }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leaderboard section header -->
+        <div class="leaderboard-section-header" v-if="!loading && entries.length > 0">
+          <h2 class="section-title">🏆 กระดานคะแนนรวม</h2>
         </div>
 
         <!-- Podium (Top 3) -->
@@ -73,9 +116,8 @@
           </div>
 
           <div class="lb-empty" v-if="entries.length === 0">
-            <p>ยังไม่มีข้อมูลคะแนน</p>
-            <p>ทำแบบทดสอบในแต่ละยุคเพื่อขึ้นกระดานคะแนน!</p>
-            <button class="parchment-btn btn-quiz" @click="$router.push('/tabs/tab1')">กลับหน้าหลัก →</button>
+            
+            <button class="parchment-btn btn-quiz" @click="goHome">กลับหน้าหลัก →</button>
           </div>
         </div>
       </div>
@@ -84,26 +126,134 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { IonPage, IonContent } from '@ionic/vue';
+import { useRouter } from 'vue-router';
+import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import NavBar from '../components/NavBar.vue';
-import { getLeaderboard, type LeaderboardEntry } from '../../auth/firestore-service';
+import { getLeaderboard, type LeaderboardEntry, getUserScores, type QuizScore } from '../../auth/firestore-service';
 import { firebaseAuth } from '../../auth/auth-web';
 
+const eraNames: Record<string, string> = {
+  prehistoric: 'ยุคก่อนประวัติศาสตร์',
+  ancient: 'อารยธรรมโบราณ',
+  'middle-ages': 'ยุคกลาง',
+  renaissance: 'ยุคฟื้นฟูศิลปวิทยา',
+  industrial: 'การปฏิวัติอุตสาหกรรม',
+  information: 'ยุคข้อมูลข่าวสาร'
+};
+
+interface EraComparison {
+  avgScore: number;
+  maxScore: number;
+  userRank: number;
+  totalPlayers: number;
+}
+
+const router = useRouter();
+const pageRef = ref();
 const loading = ref(true);
 const entries = ref<LeaderboardEntry[]>([]);
+const userEraScores = ref<(QuizScore & { displayName: string })[]>([]);
+const eraComparisons = ref<Record<string, EraComparison>>({});
 const currentUserId = ref('');
+
+const fetchEraComparisons = async (scores: QuizScore[]) => {
+  const db = getFirestore();
+  const comparisons: Record<string, EraComparison> = {};
+
+  for (const score of scores) {
+    try {
+      // Get all scores for this era
+      const scoresQuery = query(
+        collection(db, 'scores'),
+        where('eraId', '==', score.eraId)
+      );
+      const snapshot = await getDocs(scoresQuery);
+      
+      const eraScores: number[] = [];
+      let userRank = 0;
+      
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        eraScores.push(data.score);
+        
+        // Count how many players scored more than this user
+        if (data.userId !== currentUserId.value && data.score > score.score) {
+          userRank++;
+        }
+      });
+      
+      if (eraScores.length > 0) {
+        const avgScore = eraScores.reduce((a, b) => a + b, 0) / eraScores.length;
+        const maxScore = Math.max(...eraScores);
+        
+        comparisons[score.eraId] = {
+          avgScore,
+          maxScore,
+          userRank: userRank + 1, // +1 because ranking starts from 1
+          totalPlayers: eraScores.length
+        };
+      }
+    } catch (e) {
+      console.error(`Failed to load comparisons for era ${score.eraId}:`, e);
+    }
+  }
+  
+  eraComparisons.value = comparisons;
+};
 
 onMounted(async () => {
   try {
     currentUserId.value = firebaseAuth.currentUser?.uid || '';
     entries.value = await getLeaderboard(20);
+    
+    // Fetch current user's era scores
+    if (currentUserId.value) {
+      const scores = await getUserScores(currentUserId.value);
+      // Map era IDs to Thai names and sort by completed date (most recent first)
+      userEraScores.value = scores
+        .map(score => ({
+          ...score,
+          displayName: eraNames[score.eraId] || score.eraId
+        }))
+        .sort((a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime());
+      
+      // Fetch comparisons for each era
+      await fetchEraComparisons(scores);
+    }
   } catch (e) {
     console.error('Failed to load leaderboard:', e);
   } finally {
     loading.value = false;
   }
 });
+
+onBeforeUnmount(() => {
+  // Clear focus when component unmounts
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
+  }
+});
+
+const goHome = async () => {
+  // Immediately blur the active element
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
+  }
+  
+  // Move focus to body to prevent aria-hidden conflict
+  document.body.focus();
+  
+  // Small delay to ensure blur takes effect before navigation
+  await new Promise(resolve => setTimeout(resolve, 100));
+  
+  try {
+    await router.push('/tabs/tab1');
+  } catch (e) {
+    console.error('Navigation error:', e);
+  }
+};
 </script>
 
 <style scoped>
@@ -129,6 +279,144 @@ onMounted(async () => {
   font-size: 1rem;
   color: #6b5744;
   margin: 0;
+}
+
+/* User Scores Section */
+.user-scores-section {
+  padding: 30px 20px 40px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #2d1e0f;
+  text-align: center;
+}
+
+.era-scores-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.era-score-card {
+  background: linear-gradient(135deg, #fdf8ef 0%, #f5ecd7 100%);
+  border-radius: 15px;
+  padding: 18px;
+  border: 2px solid rgba(201, 169, 110, 0.2);
+  transition: all 0.3s ease;
+}
+
+.era-score-card:hover {
+  border-color: rgba(201, 169, 110, 0.5);
+  box-shadow: 0 8px 20px rgba(201, 169, 110, 0.2);
+  transform: translateY(-2px);
+}
+
+.era-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d1e0f;
+  margin-bottom: 10px;
+}
+
+.era-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.score-display {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.score-value {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #c9a96e;
+}
+
+.score-max {
+  font-size: 0.9rem;
+  color: #6b5744;
+  font-weight: 600;
+}
+
+.score-percentage {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #8c6a4a;
+}
+
+.score-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(201, 169, 110, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c9a96e 0%, #8c6a4a 100%);
+  transition: width 0.5s ease;
+  border-radius: 4px;
+}
+
+.score-meta {
+  font-size: 0.8rem;
+  color: #8a7a6a;
+  text-align: right;
+}
+
+/* Comparison Stats */
+.comparison-stats {
+  background: rgba(201, 169, 110, 0.1);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 12px;
+  border-left: 4px solid #c9a96e;
+}
+
+.comparison-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.comparison-row:last-child {
+  margin-bottom: 0;
+}
+
+.comparison-label {
+  font-weight: 600;
+  color: #6b5744;
+}
+
+.comparison-value {
+  font-weight: 700;
+  color: #2d1e0f;
+}
+
+.rank-badge {
+  background: linear-gradient(135deg, #c9a96e 0%, #8c6a4a 100%);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.leaderboard-section-header {
+  padding-top: 20px;
+  border-top: 3px dashed rgba(201, 169, 110, 0.3);
+  margin: 0 20px;
 }
 
 /* Loading */

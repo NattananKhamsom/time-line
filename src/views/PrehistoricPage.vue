@@ -395,8 +395,8 @@ spark.remove()
 })
 
 })
-
 </script>
+
 <style scoped>
 /* --- แก้ไขเฉพาะ BACKGROUND ANIMATION ให้พรีเมียมขึ้น --- */
 .parchment-container {
